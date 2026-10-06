@@ -1,20 +1,20 @@
-# ⚡ VG DIGITAL STUDIO
+# VG Digital Studio
 
-**Engineering Luxury Interfaces & High-Performance Software**
+Portfólio de Victor Freitas: sites institucionais e landing pages, com foco em empresas de Teresina–PI e Timon–MA.
 
-A **VG Studio** é uma software house focada em transformar conceitos complexos em ecossistemas digitais de alto padrão. Unimos engenharia de software avançada e design estratégico para entregar produtos escaláveis que dominam o mercado digital.
+## Tecnologia e prévia
+HTML, CSS e JavaScript, sem compilação ou dependências externas.
+Na pasta do projeto, execute `python -m http.server 4173 --bind 127.0.0.1` e abra http://127.0.0.1:4173.
 
-### 🛠 Especialidades
-* **Arquitetura Web:** Sistemas robustos com performance extrema.
-* **UI/UX Strategy:** Interfaces exclusivas desenhadas pixel a pixel.
-* **Soluções Enterprise:** Software sob medida para automação de negócios.
+## Netlify
+O arquivo netlify.toml define a raiz como diretório de publicação. Não há comando de build. A publicação depende de aprovação de Victor; esta entrega é uma prévia local.
 
-### 🚀 Stack Tecnológica
-`Next.js` `TypeScript` `Node.js` `PostgreSQL` `Docker`
+## Conteúdo
+A Climatec foi informada por Victor como projeto real. A imagem é uma captura da página pública. Não há demonstrações, depoimentos, resultados, preços ou qualificações inventadas. O conceito visual da seção inicial é uma ilustração decorativa, fora do portfólio.
 
-### 📞 Conexão
-Para protocolos de consultoria técnica:
-👉 [**Estabelecer Conexão via WhatsApp**](https://wa.me/5586995549933)
+Prazos, pagamento, propriedade do código e suporte não foram incluídos como condições comerciais: aguardam confirmação do responsável. A descrição anterior de tecnologias no README não correspondia ao código e foi corrigida.
 
----
-© 2026 **VG STUDIO** // NEXT-GEN SOFTWARE ENGINEERING
+## Contatos
+- WhatsApp: https://wa.me/5586995549933
+- E-mail: vgdigitalstudio.contato@gmail.com
+- Instagram: https://www.instagram.com/vgdigitalstudio.oficial/

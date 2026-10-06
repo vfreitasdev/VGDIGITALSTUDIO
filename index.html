@@ -1,250 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VG STUDIO | Digital Excellence</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --neon: #00ffcc;
-            --fundo-card: rgba(15, 15, 15, 0.95);
-            --borda: rgba(0, 255, 204, 0.2);
-            --texto-corpo: #b0b0b0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
-        body {
-            background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.92)), 
-                        url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #ffffff;
-            font-family: 'JetBrains Mono', monospace;
-            line-height: 1.6;
-        }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-
-        /* NAVBAR */
-        nav {
-            position: fixed; top: 0; width: 100%; background: rgba(5, 5, 5, 0.98);
-            border-bottom: 1px solid var(--borda); z-index: 1000; padding: 10px 0;
-            backdrop-filter: blur(12px);
-        }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        
-        .logo-nav {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--neon);
-            font-weight: bold;
-        }
-        .logo-nav svg { width: 35px; height: 35px; }
-
-        .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
-
-        /* HEADER */
-        header { text-align: center; padding: 180px 0 100px; }
-        .big-logo {
-            width: 120px; height: 120px; margin: 0 auto 25px;
-            filter: drop-shadow(0 0 15px var(--neon));
-        }
-        h1 { font-size: 2.8rem; letter-spacing: -1px; margin-bottom: 10px; }
-        .subtitle { color: var(--neon); font-size: 1.1rem; opacity: 0.8; letter-spacing: 2px; text-transform: uppercase; }
-
-        /* SEÇÕES */
-        section {
-            background: var(--fundo-card); border: 1px solid #222; border-radius: 20px;
-            padding: 50px; margin-bottom: 50px; backdrop-filter: blur(12px); transition: 0.3s;
-        }
-        section:hover { border-color: var(--borda); transform: translateY(-5px); }
-        h2 { color: var(--neon); font-size: 1.4rem; margin-bottom: 35px; text-transform: uppercase; display: flex; align-items: center; gap: 15px; }
-        h2::after { content: ""; height: 1px; flex-grow: 1; background: rgba(255,255,255,0.05); }
-
-        /* GRID DE SERVIÇOS */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .service-card { padding: 25px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid transparent; }
-        .service-card i { color: var(--neon); font-size: 1.8rem; margin-bottom: 15px; display: block; }
-        .service-card h4 { margin-bottom: 10px; font-size: 1.1rem; }
-        .service-card p { font-size: 0.85rem; color: var(--texto-corpo); }
-
-        /* SHOWCASE (PROJETOS) */
-        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .project-card { position: relative; border-radius: 10px; overflow: hidden; height: 220px; border: 1px solid #333; }
-        .project-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
-        .project-card:hover img { filter: grayscale(0%); transform: scale(1.1); }
-        .project-info { position: absolute; bottom: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); width: 100%; }
-
-        /* PROCESSO (WORKFLOW) */
-        .workflow { display: flex; flex-direction: column; gap: 20px; }
-        .step { display: flex; gap: 20px; align-items: flex-start; }
-        .step-num { color: var(--neon); font-weight: bold; font-size: 1.2rem; }
-
-        /* FAQ (INTEL) */
-        details { background: rgba(255,255,255,0.02); border: 1px solid #333; padding: 15px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; }
-        summary { font-weight: bold; color: #fff; outline: none; }
-        details p { font-size: 0.9rem; color: var(--texto-corpo); margin-top: 10px; }
-
-        /* BOTÃO */
-        .btn-whatsapp {
-            display: inline-flex; align-items: center; gap: 12px; background: var(--neon); color: #000;
-            padding: 18px 45px; border-radius: 8px; text-decoration: none; font-weight: 700;
-            text-transform: uppercase; transition: 0.3s; margin-top: 20px;
-        }
-        .btn-whatsapp:hover { box-shadow: 0 0 30px var(--neon); transform: scale(1.02); }
-
-        footer { text-align: center; padding: 80px 0; border-top: 1px solid #222; color: #555; }
-        .social-links a { color: #fff; font-size: 1.3rem; margin: 0 15px; opacity: 0.4; transition: 0.3s; }
-        .social-links a:hover { opacity: 1; color: var(--neon); }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            section { padding: 30px 20px; }
-            .nav-links { display: none; }
-        }
-    </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101714">
+<title>VG Digital Studio | Sites profissionais e landing pages</title>
+<meta name="description" content="Sites profissionais e landing pages para empresas. Conheça a VG Digital Studio, de Victor Freitas, com foco em Teresina–PI e Timon–MA. Solicite um orçamento.">
+<link rel="canonical" href="https://vgdigitalstudio.netlify.app/">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="VG Digital Studio">
+<meta property="og:title" content="Sites profissionais e landing pages para sua empresa"><meta property="og:description" content="Uma presença digital clara para sua empresa. Conheça os projetos da VG Digital Studio e fale com Victor Freitas."><meta property="og:url" content="https://vgdigitalstudio.netlify.app/"><meta property="og:image" content="https://vgdigitalstudio.netlify.app/assets/social.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="VG Digital Studio — sites profissionais e landing pages">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="VG Digital Studio | Sites profissionais e landing pages"><meta name="twitter:description" content="Uma presença digital clara para sua empresa. Solicite um orçamento pelo WhatsApp."><meta name="twitter:image" content="https://vgdigitalstudio.netlify.app/assets/social.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><script src="script.js" defer></script>
 </head>
 <body>
-
-    <svg style="display: none;">
-        <symbol id="logo-vg" viewBox="0 0 100 100">
-            <path d="M20 30L50 80L58 65" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M85 30C85 30 85 20 65 20C45 20 40 40 40 50C40 60 45 80 65 80C85 80 85 65 85 65V55H68" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </symbol>
-    </svg>
-
-    <nav>
-        <div class="container nav-content">
-            <a href="#" class="logo-nav">
-                <svg><use xlink:href="#logo-vg"></use></svg>
-                <span>VG STUDIO</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicos">Soluções</a></li>
-                <li><a href="#projetos">Portfolio</a></li>
-                <li><a href="#processo">Processo</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-        <header>
-            <div class="big-logo">
-                <svg style="color: var(--neon); width: 100%; height: 100%;"><use xlink:href="#logo-vg"></use></svg>
-            </div>
-            <h1>VG DIGITAL STUDIO</h1>
-            <p class="subtitle">Engenharia de Interfaces de Luxo</p>
-        </header>
-
-        <section id="sobre">
-            <h2><i class="fas fa-terminal"></i> Core.sys</h2>
-            <p>A VG Studio é focada em transformar conceitos complexos em ecossistemas digitais de alta performance. Unimos **Engenharia de Software** e **Design Estratégico** para criar produtos que escalam e dominam o mercado digital.</p>
-        </section>
-
-        <section id="servicos">
-            <h2><i class="fas fa-layer-group"></i> Soluções</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-code-branch"></i>
-                    <h4>Arquitetura Web</h4>
-                    <p>Sistemas robustos desenvolvidos com foco em conversão e performance extrema.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-bolt"></i>
-                    <h4>Otimização de Velocidade</h4>
-                    <p>Redução de latência e otimização total de Core Web Vitals para SEO.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-fingerprint"></i>
-                    <h4>Estratégia UI/UX</h4>
-                    <p>Interfaces exclusivas desenhadas pixel a pixel para uma experiência premium.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projetos">
-            <h2><i class="fas fa-eye"></i> Showcase</h2>
-            <div class="project-gallery">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" alt="Dashboard">
-                    <div class="project-info">
-                        <span style="font-size: 0.7rem; color: var(--neon);">FINANCEIRO</span>
-                        <h4 style="font-size: 0.9rem;">Nexus Dashboard v2.0</h4>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=500" alt="Analitico">
-                    <div class="project-info">
-                        <span style="font-size: 0.7rem; color: var(--neon);">E-COMMERCE</span>
-                        <h4 style="font-size: 0.9rem;">Elite Store UI Kit</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="processo">
-            <h2><i class="fas fa-cogs"></i> Nosso Processo</h2>
-            <div class="workflow">
-                <div class="step">
-                    <span class="step-num">01.</span>
-                    <div><strong>Briefing & Diagnóstico:</strong> Entendemos seu modelo de negócio e gargalos técnicos reais.</div>
-                </div>
-                <div class="step">
-                    <span class="step-num">02.</span>
-                    <div><strong>Prototipagem de Alta Fidelidade:</strong> Criamos o design completo antes de iniciar a codificação.</div>
-                </div>
-                <div class="step">
-                    <span class="step-num">03.</span>
-                    <div><strong>Desenvolvimento Ágil:</strong> Código limpo, seguro e documentado com entregas semanais.</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq">
-            <h2><i class="fas fa-comment-dots"></i> Perguntas Frequentes</h2>
-            <details>
-                <summary>Como funciona o pagamento?</summary>
-                <p>Estruturamos geralmente em 50% de entrada e 50% na entrega e aprovação final do projeto.</p>
-            </details>
-            <details>
-                <summary>O código fonte é entregue?</summary>
-                <p>Sim. O projeto é 100% de propriedade do cliente, com documentação técnica completa.</p>
-            </details>
-            <details>
-                <summary>Vocês dão suporte após o lançamento?</summary>
-                <p>Sim, oferecemos planos de manutenção e suporte técnico para garantir que tudo continue rodando perfeitamente.</p>
-            </details>
-        </section>
-
-        <section style="text-align: center;" id="contato">
-            <h2><i class="fas fa-satellite-dish"></i> Conato</h2>
-            <p>Inicie seu protocolo de transformação digital com a nossa equipe hoje mesmo.</p>
-            <a href="https://wa.me/5586995549933" class="btn-whatsapp">
-                ESTABELECER CONEXÃO
-            </a>
-        </section>
-
-        <footer>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p>© 2026 VG DIGITAL STUDIO // TODOS OS DIREITOS RESERVADOS</p>
-            <p style="font-size: 0.6rem; margin-top: 15px; letter-spacing: 2px;">STATUS: ONLINE // VERSÃO: 3.0.4</p>
-        </footer>
-    </div>
-
-</body>
-</html>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header"><div class="container header-row">
+<a class="brand" href="#inicio" aria-label="VG Digital Studio — início"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 30L50 80L58 65M85 30C85 30 85 20 65 20C45 20 40 40 40 50C40 60 45 80 65 80C85 80 85 65 85 65V55H68"/></svg><span>VG<span class="brand-sub">DIGITAL STUDIO</span></span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navegacao" hidden>Menu <span aria-hidden="true">☰</span></button>
+<nav id="navegacao" aria-label="Navegação principal"><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#faq">Dúvidas</a><a href="#contato">Contato</a><a class="button small" href="https://wa.me/5586995549933" aria-label="Solicitar orçamento pelo WhatsApp">Solicitar orçamento <span aria-hidden="true">↗</span></a></nav>
+</div></header>
+<main id="conteudo">
+<section class="hero container" id="inicio" aria-labelledby="titulo"><div class="hero-copy"><p class="eyebrow"><span class="dot" aria-hidden="true"></span> SUA EMPRESA, BEM APRESENTADA ONLINE</p><h1 id="titulo">Sites profissionais e <span>landing pages</span> para sua empresa</h1><p class="lead">Apresente seu negócio com clareza e facilite o contato de novos clientes. A VG Digital Studio cria sites com visual profissional e uma experiência que funciona no celular e no computador.</p><div class="actions"><a class="button" href="https://wa.me/5586995549933">Solicitar orçamento pelo WhatsApp <span aria-hidden="true">↗</span></a><a class="text-link" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a></div><p class="local-note">Foco em empresas de Teresina–PI e Timon–MA.</p></div>
+<div class="hero-art" aria-hidden="true"><div class="orbit"></div><div class="browser-art"><div class="browser-bar"><i></i><i></i><i></i><span>Uma presença digital com propósito</span></div><div class="art-content"><div class="art-nav"><b>VG.</b><span>CLAREZA · DESIGN · CONEXÃO</span></div><p class="art-label">O PRÓXIMO PASSO DO SEU NEGÓCIO</p><div class="art-title">Sua empresa.<br><em>Novas possibilidades.</em></div><div class="art-lines"><i></i><i></i></div><div class="art-cta">Vamos conversar <span>↗</span></div><div class="art-bottom"><span>01 / Apresentar</span><span>02 / Conectar</span></div></div></div><div class="art-tag"><span>↗</span> Feito para aproximar<br><b>sua empresa de novos clientes.</b></div><p class="art-caption">ILUSTRAÇÃO DE INTERFACE · CONCEITO VISUAL</p></div></section>
+<div class="principles"><div class="container"><span>Design com propósito</span><span>Conteúdo claro</span><span>Experiência em todas as telas</span></div></div>
+<section class="section container" id="servicos" aria-labelledby="servicos-titulo"><div class="section-heading"><div><p class="eyebrow">01 / SERVIÇOS</p><h2 id="servicos-titulo">O site certo para<br>o seu objetivo.</h2></div><p>Da apresentação da sua empresa a uma campanha específica: cada solução começa com o que seu negócio precisa comunicar.</p></div><div class="service-grid">
+<article class="service-card"><span class="service-icon" aria-hidden="true">▤</span><span class="number" aria-hidden="true">01</span><h3>Sites institucionais</h3><p>Um espaço para apresentar sua empresa, seus serviços e as informações que ajudam o cliente a dar o próximo passo.</p><ul><li>Apresentação da empresa e dos serviços</li><li>Conteúdo organizado e navegação simples</li><li>Links diretos para seus canais de contato</li><li>Layout adaptado ao celular e ao computador</li></ul><a class="text-link" href="https://wa.me/5586995549933">Conversar sobre meu site <span aria-hidden="true">↗</span></a></article>
+<article class="service-card"><span class="service-icon" aria-hidden="true">↗</span><span class="number" aria-hidden="true">02</span><h3>Landing pages</h3><p>Uma página focada em uma oferta, serviço ou campanha, com uma mensagem objetiva e um caminho claro para entrar em contato.</p><ul><li>Apresentação de uma oferta ou serviço</li><li>Estrutura voltada ao objetivo da campanha</li><li>Chamadas para ação em pontos estratégicos</li><li>Layout adaptado ao celular e ao computador</li></ul><a class="text-link" href="https://wa.me/5586995549933">Conversar sobre minha landing page <span aria-hidden="true">↗</span></a></article>
+</div></section>
+<section class="section tinted" id="projetos" aria-labelledby="projetos-titulo"><div class="container"><div class="section-heading"><div><p class="eyebrow">02 / PORTFÓLIO</p><h2 id="projetos-titulo">Um projeto para conhecer<br>de perto.</h2></div><p>Veja como a apresentação dos serviços e os caminhos de contato se conectam em um site desenvolvido por Victor Freitas.</p></div>
+<article class="project"><a class="project-image" href="https://climatecteresina.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Visualizar site da Climatec em uma nova aba"><img src="assets/climatec.jpg" loading="lazy" alt="Captura do site Climatec, com navegação, apresentação de serviços de refrigeração e botão para WhatsApp"></a><div class="project-copy"><div class="project-meta"><span>SITE DE SERVIÇOS</span><span class="badge">Projeto real</span></div><h3>Climatec</h3><p class="project-subtitle">Refrigeração e climatização em Teresina</p><p>Site para apresentar os serviços de instalação e manutenção, com seções organizadas e acesso direto ao WhatsApp da empresa.</p><ul class="project-features"><li>Apresentação dos serviços</li><li>Navegação por seções</li><li>Contato direto pelo WhatsApp</li></ul><a class="text-link" href="https://climatecteresina.netlify.app/" target="_blank" rel="noopener noreferrer">Visualizar projeto <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a></div></article><p class="project-note">Captura do site publicado da Climatec. Conheça o projeto completo no link acima.</p>
+</div></section>
+<section class="section container about-grid" id="sobre" aria-labelledby="sobre-titulo"><div class="about-mark" aria-hidden="true"><span>VG.</span><p>Design que apresenta.<br>Sites que conectam.</p><small>VICTOR FREITAS / DIGITAL STUDIO</small></div><div class="about-copy"><p class="eyebrow">03 / SOBRE O STUDIO</p><h2 id="sobre-titulo">Seu negócio tem uma história.<br>Seu site deve contá-la bem.</h2><p>Sou Victor Freitas, responsável pela VG Digital Studio. Minha atuação é voltada à criação de sites profissionais e landing pages para empresas.</p><p>A proposta é transformar as informações do seu negócio em uma presença digital clara, com visual consistente e acesso fácil aos seus serviços e contatos.</p><p>Atendo às necessidades de pequenas e grandes empresas, com foco em Teresina–PI e Timon–MA.</p><a class="text-link" href="https://wa.me/5586995549933">Falar com Victor <span aria-hidden="true">↗</span></a></div></section>
+<section class="section tinted" id="processo" aria-labelledby="processo-titulo"><div class="container"><div class="section-heading"><div><p class="eyebrow">04 / COMO FUNCIONA</p><h2 id="processo-titulo">Clareza em cada etapa.</h2></div><p>Um processo organizado para alinhar o que sua empresa precisa e acompanhar a construção do site.</p></div><ol class="process-grid"><li><span aria-hidden="true">01</span><h3>Conversa inicial</h3><p>Entendemos sua empresa, seu público e o objetivo do projeto.</p></li><li><span aria-hidden="true">02</span><h3>Escopo e proposta</h3><p>Definimos as páginas, os conteúdos e as necessidades para preparar a proposta.</p></li><li><span aria-hidden="true">03</span><h3>Desenvolvimento</h3><p>Construímos o visual e a estrutura conforme o escopo combinado.</p></li><li><span aria-hidden="true">04</span><h3>Revisão</h3><p>Você confere o projeto e alinhamos os ajustes previstos na proposta.</p></li><li><span aria-hidden="true">05</span><h3>Entrega</h3><p>Verificamos o site e organizamos a entrega conforme o que foi contratado.</p></li></ol></div></section>
+<section class="section container faq-grid" id="faq" aria-labelledby="faq-titulo"><div><p class="eyebrow">05 / PERGUNTAS FREQUENTES</p><h2 id="faq-titulo">Antes de começar.</h2><p class="faq-intro">Tem outra dúvida? Converse diretamente com Victor pelo WhatsApp.</p><a class="text-link" href="https://wa.me/5586995549933">Tirar uma dúvida <span aria-hidden="true">↗</span></a></div><div class="faq-list"><details><summary>Qual a diferença entre site institucional e landing page?</summary><p>O site institucional apresenta sua empresa de forma mais ampla, com informações sobre o negócio e seus serviços. A landing page concentra a comunicação em uma oferta, serviço ou campanha específica.</p></details><details><summary>O site funciona no celular?</summary><p>A adaptação ao celular e ao computador faz parte da proposta de criação. A organização dos elementos considera diferentes tamanhos de tela para facilitar a leitura e a navegação.</p></details><details><summary>O que preciso informar para solicitar um orçamento?</summary><p>Conte o que sua empresa faz, qual é o objetivo do site e quais conteúdos ou referências você já possui. Essas informações ajudam a definir o escopo e preparar uma proposta adequada.</p></details><details><summary>Como escolher a solução para minha empresa?</summary><p>Na conversa inicial, avaliamos o que você precisa apresentar e qual ação espera do visitante. Assim, podemos definir se faz mais sentido um site institucional ou uma landing page.</p></details></div></section>
+<section class="contact-section" id="contato" aria-labelledby="contato-titulo"><div class="container contact-grid"><div><p class="eyebrow">06 / CONTATO</p><h2 id="contato-titulo">Vamos dar o próximo passo<br>na presença digital da sua empresa?</h2><p>Conte sua ideia, seu momento e o que você precisa. Vamos conversar sobre o projeto.</p><a class="button" href="https://wa.me/5586995549933">Solicitar orçamento pelo WhatsApp <span aria-hidden="true">↗</span></a></div><address class="contact-links"><a href="https://wa.me/5586995549933"><small>WHATSAPP</small><span>(86) 99554-9933 <b aria-hidden="true">↗</b></span></a><a href="mailto:vgdigitalstudio.contato@gmail.com"><small>E-MAIL</small><span>vgdigitalstudio.contato@gmail.com <b aria-hidden="true">↗</b></span></a><a href="https://www.instagram.com/vgdigitalstudio.oficial/"><small>INSTAGRAM</small><span>@vgdigitalstudio.oficial <b aria-hidden="true">↗</b></span></a></address></div></section>
+</main>
+<footer class="container footer"><div><a class="footer-brand" href="#inicio">VG Digital Studio<span aria-hidden="true">.</span></a><p>Sites profissionais e landing pages.</p></div><nav aria-label="Links do rodapé"><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="https://www.instagram.com/vgdigitalstudio.oficial/">Instagram</a></nav><p class="copyright">© 2026 VG Digital Studio.<br>Responsável: Victor Freitas.</p></footer>
+</body></html>
